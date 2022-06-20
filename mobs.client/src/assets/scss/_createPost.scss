@@ -1,0 +1,88 @@
+@import "./main.scss";
+
+#create-post {
+  display: flex;
+  flex-direction: column;
+  border-radius: inherit;
+  @include bigShadow($dark, 0.7);
+  background: desaturate(lighten($warning, 38), 35%);
+  padding: 1em 2em;
+  width: 75%;
+  margin: 3em auto;
+
+  h6 {
+    font-size: 16px;
+    color: $secondary;
+    text-align: left;
+    margin: 0.5em 0;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+
+    div {
+      display: flex;
+      justify-content: end;
+    }
+
+    input,
+    textarea,
+    select,
+    button {
+      border-radius: 5px;
+      margin: 0.5em 0;
+      padding: 0.5em;
+      border: 0;
+      color: $dark;
+      background: lighten($warning, 40);
+    }
+
+    &>div>input {
+      width: 70%;
+    }
+
+    input,
+    textarea {
+      box-shadow: inset 0px 2px 4px rgba(26, 26, 26, 0.26);
+    }
+
+    select {
+      color: $dark;
+      width: 30%;
+      background: desaturate(lighten($secondary, 30), 50%);
+      @include bigShadow(desaturate(lighten($secondary, 30), 50%));
+      text-align: center;
+      font-weight: 600;
+      border: 0;
+
+      option {
+        background: $white;
+      }
+    }
+
+    button {
+      display: inline-block;
+      width: 25%;
+      padding: 0.75em 0.1em;
+      border: 0;
+
+      // cancel button
+      &:nth-child(1) {
+        margin-left: auto;
+        background: transparent;
+        @include selectable($danger);
+      }
+
+      // create button
+      &:nth-child(2) {
+        @include bigShadow($secondary, 0.5);
+        @include selectable();
+        font-weight: 600;
+        background: $secondary;
+        color: $white;
+        text-transform: capitalize;
+      }
+    }
+  }
+}

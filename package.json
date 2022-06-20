@@ -1,0 +1,14 @@
+{
+  "name": "mobs",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "npm run setup:server",
+    "setup:app": "npm run setup:server && npm run setup:client",
+    "setup:client": "cd mobs.client && npm i",
+    "setup:server": "cd mobs && npm i",
+    "start": "node mobs/index.js"
+  },
+  "engines": {
+    "node": "^14.17.0"
+  }
+}

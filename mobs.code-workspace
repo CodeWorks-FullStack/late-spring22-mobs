@@ -1,0 +1,59 @@
+{
+  "folders": [
+    {
+      "path": "mobs.client",
+      "name": "client"
+    },
+    {
+      "path": "mobs",
+      "name": "server"
+    }
+  ],
+  "settings": {
+    "editor.suggestSelection": "first",
+    "git.enableSmartCommit": true,
+    "git.confirmSync": false,
+    "git.autofetch": true,
+    "javascript.referencesCodeLens.enabled": true,
+    "javascript.referencesCodeLens.showOnAllFunctions": true,
+    "typescript.implementationsCodeLens.enabled": true,
+    "typescript.referencesCodeLens.enabled": true,
+    "typescript.referencesCodeLens.showOnAllFunctions": true,
+    "js/ts.implicitProjectConfig.checkJs": true,
+    "files.exclude": {
+      "**/.nyc_*": true,
+      "**/coverage": true,
+      "**/node_modules": true
+    },
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "explorer.confirmDragAndDrop": false,
+    "vetur.format.defaultFormatter.js": "vscode-typescript",
+    "eslint.alwaysShowStatus": true,
+    "eslint.format.enable": true,
+    "eslint.lintTask.enable": true,
+    "eslint.codeActionsOnSave.mode": "all",
+    "editor.codeActionsOnSave": {
+      "source.fixAll": true
+    },
+    "workbench.colorCustomizations": {
+      "activityBar.activeBackground": "#edd3dc",
+      "activityBar.activeBorder": "#619e41",
+      "activityBar.background": "#edd3dc",
+      "activityBar.foreground": "#15202b",
+      "activityBar.inactiveForeground": "#15202b99",
+      "activityBarBadge.background": "#619e41",
+      "activityBarBadge.foreground": "#15202b",
+      "sash.hoverBorder": "#edd3dc",
+      "statusBar.background": "#dfaec0",
+      "statusBar.foreground": "#15202b",
+      "statusBarItem.hoverBackground": "#d189a4",
+      "statusBarItem.remoteBackground": "#dfaec0",
+      "statusBarItem.remoteForeground": "#15202b",
+      "titleBar.activeBackground": "#dfaec0",
+      "titleBar.activeForeground": "#15202b",
+      "titleBar.inactiveBackground": "#dfaec099",
+      "titleBar.inactiveForeground": "#15202b99"
+    },
+    "peacock.color": "#dfaec0"
+  }
+}

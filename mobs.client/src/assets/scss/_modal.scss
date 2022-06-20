@@ -1,0 +1,13 @@
+@import "./main.scss";
+
+.modal-content {
+  background-color: desaturate(lighten($warning, 38), 35%);
+  ;
+
+  .modal-header {
+    font-size: 18px;
+    color: lighten($light, 20) !important;
+    background-color: lighten($primary, 5);
+    @include baloo(600);
+  }
+}

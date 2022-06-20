@@ -1,0 +1,63 @@
+@import "./_variables.scss";
+@import "bootstrap";
+@import "./_overrides.scss";
+@import "./utilities.scss";
+@import "./loaders.scss";
+@import url('https://fonts.googleapis.com/css2?family=Alata&family=Baloo+2:wght@400;500;600;700;800&display=swap');
+
+
+@mixin baloo($weight: 400) {
+  font-family: 'Baloo 2', cursive;
+  font-weight: $weight;
+}
+
+.baloo {
+  font-family: 'Baloo 2', cursive;
+}
+
+@mixin alata($weight: 400) {
+  font-family: 'Alata', sans-serif;
+  font-weight: $weight;
+}
+
+.alata {
+  font-family: 'Alata', sans-serif;
+}
+
+@mixin bigShadow($color: $dark, $trans: .5) {
+  box-shadow: 0px 4px 15px fade-out(darken($color, 5), $trans);
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: $body-bg;
+}
+
+main {
+  flex-grow: 1;
+}
+
+a {
+  text-decoration: none;
+}
+
+input,
+textarea,
+select {
+  &:not(:placeholder-shown) {
+    &:valid {
+      border: 1px solid $success;
+    }
+
+    &:invalid {
+      border: 1px solid $danger;
+    }
+  }
+}
+
+form:invalid button[type="submit"] {
+  filter: grayscale(1);
+  pointer-events: none;
+}
