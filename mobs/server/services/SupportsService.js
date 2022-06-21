@@ -8,15 +8,13 @@ class SupportsService {
       .populate('account', 'name picture')
       .populate('tier')
       .populate('project')
-    if (!support) {
-      throw new BadRequest("Invalid Id")
-    }
     return support
   }
   async getMySupports(accountId) {
     const projects = await dbContext.Support.find({ accountId })
       .populate('project')
       .populate('tier')
+    return projects
   }
   async getProjectSupporters(projectId) {
     const supporters = await dbContext.Support.find({ projectId })
@@ -41,6 +39,7 @@ class SupportsService {
     const support = await dbContext.Support.create(supportData)
     await support.populate('project')
     await support.populate('tier')
+    await support.populate('account')
     return support
   }
   async changeTier(supportData) {

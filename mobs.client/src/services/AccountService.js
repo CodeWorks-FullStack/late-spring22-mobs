@@ -13,17 +13,17 @@ class AccountService {
     }
   }
 
-  async getMyProjects(){
+  async getMyProjects() {
     const res = await api.get('account/projects')
     logger.log('account projects', res.data)
     AppState.accountProjects = res.data
   }
 
-  async getSupports(){
+  async getSupports() {
     try {
-        const res = await api.get('/account/supports')
-        logger.log('[supported Projects]', res.data)
-        AppState.supportedProjects = res.data
+      const res = await api.get('account/supports')
+      logger.log('[supported Projects]', res.data)
+      AppState.supportedProjects = res.data
     } catch (error) {
       Pop.error(error)
     }

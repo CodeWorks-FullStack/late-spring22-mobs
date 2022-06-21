@@ -10,6 +10,7 @@
           <i class="mdi mdi-pencil"></i> edit </button>
       </div>
       <!-- TODO need supporters -->
+      <Supporters />
       <Modal id="edit-project">
         <template #header>Edit {{ project.name }}</template>
         <template #body>
@@ -61,6 +62,7 @@ import { useRoute } from 'vue-router'
 import { AppState } from '../AppState'
 import { postsService } from '../services/PostsService'
 import { projectsService } from '../services/ProjectsService'
+import { supportsService } from '../services/SupportsService.js'
 import { tiersService } from '../services/TiersService'
 import Pop from '../utils/Pop'
 
@@ -76,6 +78,7 @@ export default {
           await projectsService.getProject(route.params.id)
           await tiersService.getTiersByProject(route.params.id)
           await postsService.getPostsByProject(route.params.id)
+          await supportsService.getSupportsByProject(route.params.id)
         }
       } catch (error) {
         Pop.error(error)
@@ -85,6 +88,7 @@ export default {
       filterTier,
       project: computed(() => AppState.activeProject),
       tiers: computed(() => AppState.tiers.sort((a, b) => a.cost - b.cost)),
+      supporters: computed(() => AppState.supporters),
       // NOTE filters by tier id only IF there is a filter value, if there is not it returns all
       posts: computed(() => AppState.posts.filter(p => filterTier.value ? p.tierId == filterTier.value : true)),
       lockedPosts: computed(() => AppState.lockedPosts),
