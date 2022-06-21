@@ -1,10 +1,10 @@
-import { dbContext } from "../db/DbContext";
-import { BadRequest } from "../utils/Errors";
+import { dbContext } from "../db/DbContext"
+import { BadRequest } from "../utils/Errors"
 
 
-class TiersService{
+class TiersService {
   async getProjectTiers(projectId) {
-    let tiers = await dbContext.Tiers.find({projectId})
+    let tiers = await dbContext.Tiers.find({ projectId })
     return tiers
   }
   async create(body) {
@@ -14,13 +14,14 @@ class TiersService{
   }
   async delete(id, userId) {
     const tier = await dbContext.Tiers.findById(id)
-    if(tier.creatorId.toString() != userId){
+    if (tier.creatorId.toString() != userId) {
       throw new BadRequest("you don't have permission to delete that tier")
     }
+    // AWAIT do not delete if there are backers
     await tier.remove()
     return `deleted tier ${tier.name}`
   }
 
 }
 
-export const tiersService = new TiersService();
+export const tiersService = new TiersService()

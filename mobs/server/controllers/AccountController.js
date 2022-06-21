@@ -11,7 +11,6 @@ export class AccountController extends BaseController {
       .use(Auth0Provider.getAuthorizedUserInfo)
       .get('', this.getUserAccount)
       .get('/projects', this.getProjects)
-      // TODO Get Account Supports
       .get('/supports', this.getSupportingProjects)
   }
 
@@ -32,8 +31,6 @@ export class AccountController extends BaseController {
       next(error)
     }
   }
-
-  // TODO GET PROJECT/TIER DETAILS IM SUPPORTING
   async getSupportingProjects(req, res, next) {
     try {
       const userInfo = req.userInfo

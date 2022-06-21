@@ -19,7 +19,6 @@
       </button>
     </section>
     <section id="supported-projects">
-      <!-- TODO -->
       <h5>Projects You Support</h5>
       <div class="supports-container">
         <SupportedProject v-for="s in supportedProjects" :key="s.id" :support="s" />

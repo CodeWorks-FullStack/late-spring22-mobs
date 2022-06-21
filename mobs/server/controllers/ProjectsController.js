@@ -13,9 +13,7 @@ export class ProjectsController extends BasController {
       .get('/:id', this.getById)
       .get('/:id/tiers', this.getTiers)
       .get('/:id/supports', this.getSupporters)
-      // TODO get supports by project
       .use(Auth0Provider.getAuthorizedUserInfo)
-      // TODO get posts by project
       .get('/:id/posts', this.getPosts)
       .post('', this.create)
       .put('/:id', this.update)
@@ -69,7 +67,6 @@ export class ProjectsController extends BasController {
     }
   }
 
-  // TODO GET PROJECT POSTS BUT RESTRICT ACCESS BASED ON SUPPORT TIER
   async getPosts(req, res, next) {
     try {
       const userInfo = req.userInfo
@@ -80,7 +77,6 @@ export class ProjectsController extends BasController {
     }
   }
 
-  // TODO GET TIERS BY PROJECT
   async getTiers(req, res, next) {
     try {
       const tiers = await tiersService.getProjectTiers(req.params.id)
@@ -90,7 +86,6 @@ export class ProjectsController extends BasController {
     }
   }
 
-  // TODO GET ACCOUNT/TIER DETAILS OF PEOPLE SUPPORTING THIS PROJECT
   async getSupporters(req, res, next) {
     try {
       const supports = await supportsService.getProjectSupporters(req.params.id)

@@ -9,7 +9,6 @@
         <button v-if="account.id == project.creatorId" data-bs-toggle="modal" data-bs-target="#edit-project">
           <i class="mdi mdi-pencil"></i> edit </button>
       </div>
-      <!-- TODO need supporters -->
       <Supporters />
       <Modal id="edit-project">
         <template #header>Edit {{ project.name }}</template>

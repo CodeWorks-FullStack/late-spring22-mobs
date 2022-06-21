@@ -2,16 +2,11 @@
   <div class="home container">
     <div class="row hero-banner rounded mt-3">
       <div class="col-12 text-center">
-        <h5>
-          “It is literally true that you can succeed best and quickest by
-          helping others to succeed.”
-        </h5>
+        <h5> “It is literally true that you can succeed best and quickest by helping others to succeed.” </h5>
         <p>-Napoleon Hill</p>
       </div>
     </div>
     <div class="row ps-3 baloo">find what inspires you</div>
-    <!-- TODO add projects -->
-
     <div class="row projects-row">
       <div v-for="p in projects" :key="p.id" class="col-12">
         <Project :project="p" />
@@ -22,9 +17,9 @@
 
 <script>
 import { computed, onMounted } from '@vue/runtime-core'
+import { AppState } from '../AppState'
 import { projectsService } from '../services/ProjectsService'
 import Pop from '../utils/Pop'
-import { AppState } from '../AppState'
 export default {
   name: 'Home',
   setup() {
