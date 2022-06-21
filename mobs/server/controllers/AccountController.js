@@ -12,6 +12,7 @@ export class AccountController extends BaseController {
       .get('', this.getUserAccount)
       .get('/projects', this.getProjects)
       // TODO Get Account Supports
+      .get('/supports', this.getSupportingProjects)
   }
 
   async getUserAccount(req, res, next) {
@@ -23,9 +24,9 @@ export class AccountController extends BaseController {
     }
   }
 
-  async getProjects(req, res, next){
+  async getProjects(req, res, next) {
     try {
-      const projects = await projectsService.getAll({creatorId: req.userInfo.id})
+      const projects = await projectsService.getAll({ creatorId: req.userInfo.id })
       return res.send(projects)
     } catch (error) {
       next(error)
@@ -33,7 +34,7 @@ export class AccountController extends BaseController {
   }
 
   // TODO GET PROJECT/TIER DETAILS IM SUPPORTING
-  async getSupportingProjects (req, res, next){
+  async getSupportingProjects(req, res, next) {
     try {
       const userInfo = req.userInfo
       const supports = await supportsService.getMySupports(userInfo.id)

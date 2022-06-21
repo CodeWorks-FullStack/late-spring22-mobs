@@ -12,3 +12,5 @@ registerGlobalComponents(root)
 root
   .use(router)
   .mount('#app')
+
+

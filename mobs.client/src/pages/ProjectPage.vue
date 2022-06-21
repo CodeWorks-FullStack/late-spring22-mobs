@@ -5,21 +5,16 @@
       <img :src="project.img" alt="" />
       <div>
         <h4>{{ project.name }}</h4>
-        <p v-if="project.createdAt">
-          funded since {{ formatDate(project.createdAt) }}
-        </p>
-        <button
-          v-if="account.id == project.creatorId"
-          data-bs-toggle="modal"
-          data-bs-target="#edit-project"
-        >
-          <i class="mdi mdi-pencil"></i> edit
-        </button>
+        <p v-if="project.createdAt"> funded since {{ formatDate(project.createdAt) }} </p>
+        <button v-if="account.id == project.creatorId" data-bs-toggle="modal" data-bs-target="#edit-project">
+          <i class="mdi mdi-pencil"></i> edit </button>
       </div>
       <!-- TODO need supporters -->
       <Modal id="edit-project">
         <template #header>Edit {{ project.name }}</template>
-        <template #body><ProjectForm :project="project" /></template>
+        <template #body>
+          <ProjectForm :project="project" />
+        </template>
       </Modal>
     </section>
     <!-- TIERS CONTAINER -->
@@ -28,16 +23,14 @@
       <div class="tiers">
         <Tier v-for="t in tiers" :key="t.id" :tier="t" />
       </div>
-      <button
-        v-if="project.creatorId == account.id"
-        data-bs-toggle="modal"
-        data-bs-target="#create-tier"
-      >
+      <button v-if="project.creatorId == account.id" data-bs-toggle="modal" data-bs-target="#create-tier">
         <i class="mdi mdi-plus"></i>
       </button>
       <Modal id="create-tier">
         <template #header>Create Tier</template>
-        <template #body><CreateTier /> </template>
+        <template #body>
+          <CreateTier />
+        </template>
       </Modal>
     </section>
     <!-- POSTS CONTAINER -->
@@ -47,17 +40,14 @@
       <div class="tier-filter">
         <div>filter posts by:</div>
         <button @click="filterTier = ''">all</button>
-        <button v-for="t in tiers" :key="t.id" @click="filterTier = t.id">
-          {{ t.name }}
-        </button>
+        <button v-for="t in tiers" :key="t.id" @click="filterTier = t.id"> {{ t.name }} </button>
       </div>
       <div id="posts">
         <p v-if="lockedPosts">Locked Posts: {{ lockedPosts }}</p>
         <Post v-for="p in posts" :key="p.id" :post="p" />
         <div v-if="posts.length <= 0">No Posts to show</div>
-        <div v-if="!isSupporter && project.creatorId != account.id">
-          please support this creator to see their posts
-          <i class="mdi mdi-lock"></i>
+        <div v-if="!isSupporter && project.creatorId != account.id"> please support this creator to see their posts <i
+            class="mdi mdi-lock"></i>
         </div>
       </div>
     </section>
@@ -66,17 +56,15 @@
 
 
 <script>
-import { computed, onMounted, ref, watchEffect } from 'vue';
-import { useRoute } from 'vue-router';
-import { AppState } from '../AppState';
-import { postsService } from '../services/PostsService';
-import { projectsService } from '../services/ProjectsService';
-import { tiersService } from '../services/TiersService';
-import { logger } from '../utils/Logger';
-import Pop from '../utils/Pop';
-import Tier from "../components/Tier.vue";
+import { computed, ref, watchEffect } from 'vue'
+import { useRoute } from 'vue-router'
+import { AppState } from '../AppState'
+import { postsService } from '../services/PostsService'
+import { projectsService } from '../services/ProjectsService'
+import { tiersService } from '../services/TiersService'
+import Pop from '../utils/Pop'
+
 export default {
-  components: { Tier },
   setup() {
     const route = useRoute()
     const filterTier = ref('')
@@ -110,7 +98,7 @@ export default {
       }
     }
   }
-};
+}
 </script>
 
 
