@@ -32,7 +32,11 @@ class ProjectsService {
     if (project.creatorId.toString() != userId) {
       throw new BadRequest("you don't have permission to delete that project")
     }
-    // TODO data clean up
+    // delete all tiers
+    await dbContext.Tiers.deleteMany({ projectId: id })
+    // backers
+    await dbContext.Support.deleteMany({ projectId: id })
+
     await project.remove()
     return `deleted project ${project.name}, and all of it's data`
   }

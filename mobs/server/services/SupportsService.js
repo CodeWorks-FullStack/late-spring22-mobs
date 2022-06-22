@@ -36,6 +36,12 @@ class SupportsService {
     if (isSupporting) {
       throw new BadRequest('You Already support this project')
     }
+    // is the tier Open
+    const tier = await dbContext.Tiers.findById(supportData.tierId)
+    if (tier.closed) {
+      throw new BadRequest("this Tier is closed")
+    }
+
     const support = await dbContext.Support.create(supportData)
     await support.populate('project')
     await support.populate('tier')
